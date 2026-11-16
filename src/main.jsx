@@ -829,7 +829,7 @@ function App() {
                 <FigmaAsset section="50:115" name="imgArrowUpRight2" />
               </a>
             </div>
-            <h1 className="hero-title">
+            <h1 className="hero-title" style={{ fontWeight: 300 }}>
               <FlickerText>Every application</FlickerText>
               <br />
               <FlickerText>gets an answer.</FlickerText>
