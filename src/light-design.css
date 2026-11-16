@@ -1979,13 +1979,19 @@ h2 {
 }
 .brand-ink > .progrize-wordmark {
   color: var(--fg);
+  font-weight: 400;
 }
 .brand-large > .progrize-mark {
   width: 45.74px;
   height: 37px;
 }
+.brand-large > .progrize-mark > i {
+  color: var(--fg);
+}
 .brand-large > .progrize-wordmark {
+  color: var(--fg);
   font-size: 41.38px;
+  font-weight: 300;
   letter-spacing: -3.81px;
 }
 @media (max-width: 760px) {
