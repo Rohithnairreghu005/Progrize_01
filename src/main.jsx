@@ -860,7 +860,14 @@ function App() {
                   className={`process-step ${stage === i ? "is-current" : ""}`}
                   key={item.title}
                 >
-                  <span className="process-step-label mono">
+                  <span
+                    className="process-step-label mono"
+                    style={
+                      i === 1
+                        ? { backgroundColor: "rgb(255, 255, 255)" }
+                        : undefined
+                    }
+                  >
                     {String(i + 1).padStart(2, "0")} / {item.label}
                   </span>
                   <h2 data-heading-reveal>
