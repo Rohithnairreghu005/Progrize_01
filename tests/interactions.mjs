@@ -236,7 +236,11 @@ const textButton = (within, label) =>
 assert.equal(all("h1").length, 1);
 assert.equal($(".brand").getAttribute("aria-label"), "Progrize home");
 assert.match($(".brand").textContent, /Progrize/);
-assert.equal($(".progrize-mark").getAttribute("src"), "/progrize-mark.svg");
+assert.ok(
+  all(".progrize-mark").every((mark) => mark.children.length === 3),
+  "Every rendered brand has the three-part Figma mark",
+);
+assert.equal($(".progrize-wordmark").textContent, "Progrize");
 assert.ok(
   !/\bheard\b/i.test(document.body.textContent),
   "No legacy brand in page copy",

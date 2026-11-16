@@ -1932,21 +1932,53 @@ h2 {
   color: var(--bg);
 }
 .brand > .progrize-mark {
-  width: 30px;
+  position: relative;
+  display: block;
+  width: 37.08px;
   height: 30px;
   flex-shrink: 0;
 }
-.brand > span {
+.brand > .progrize-mark > i {
+  position: absolute;
+  display: block;
+  background: #fff;
+  border-radius: 58px 0 5px 5px;
+}
+.brand > .progrize-mark > i:nth-child(1) {
+  left: 0;
+  top: 66.28%;
+  width: 22.73%;
+  height: 33.71%;
+}
+.brand > .progrize-mark > i:nth-child(2) {
+  left: 24.55%;
+  top: 31.46%;
+  width: 30%;
+  height: 68.54%;
+}
+.brand > .progrize-mark > i:nth-child(3) {
+  left: 56.37%;
+  top: 0;
+  width: 43.63%;
+  height: 100%;
+}
+.brand > .progrize-wordmark {
   width: auto;
-  font-size: 18px;
-  letter-spacing: -0.04em;
+  color: #d6e264;
+  font-family: "Manrope:SemiBold", Manrope, Arial, sans-serif;
+  font-size: 33.55px;
+  font-weight: 600;
+  line-height: 0.7895;
+  letter-spacing: -3.09px;
+  white-space: nowrap;
 }
 .brand-large > .progrize-mark {
-  width: 37px;
+  width: 45.74px;
   height: 37px;
 }
-.brand-large > span {
-  font-size: 36px;
+.brand-large > .progrize-wordmark {
+  font-size: 41.38px;
+  letter-spacing: -3.81px;
 }
 @media (max-width: 760px) {
   .hero-title {
@@ -1954,11 +1986,11 @@ h2 {
     font-weight: 500;
     letter-spacing: -0.065em;
   }
-  .brand > span {
-    font-size: 18px;
+  .brand > .progrize-wordmark {
+    font-size: 33.55px;
   }
-  .brand-large > span {
-    font-size: 32px;
+  .brand-large > .progrize-wordmark {
+    font-size: 41.38px;
   }
   .company-image {
     width: 30px;

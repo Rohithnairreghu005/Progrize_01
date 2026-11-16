@@ -159,14 +159,12 @@ export function Brand({ large = false }) {
       href="#home"
       aria-label="Progrize home"
     >
-      <img
-        className="progrize-mark"
-        src="/progrize-mark.svg"
-        width={large ? 37 : 30}
-        height={large ? 37 : 30}
-        alt=""
-      />
-      <span>Progrize</span>
+      <span className="progrize-mark" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </span>
+      <span className="progrize-wordmark">Progrize</span>
     </a>
   );
 }
