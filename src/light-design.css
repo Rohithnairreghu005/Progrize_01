@@ -572,8 +572,12 @@ h3 > span {
 }
 .match-card {
   margin-top: 0;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
+}
+.match-summary,
+.match-score {
+  min-width: 0;
 }
 .match-summary {
   padding: 40px;
@@ -758,7 +762,12 @@ h3 > span {
 .profile-section {
   gap: 80px;
   padding-block: 100px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.profile-copy,
+.profile-card,
+.profile-card-top > div:last-of-type {
+  min-width: 0;
 }
 .profile-copy > p {
   max-width: 430px;
@@ -1472,8 +1481,16 @@ h3 > span {
   .impact-visual > small {
     font-size: 8px;
   }
+  .match-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .match-summary {
-    padding: 30px;
+    padding: 28px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .match-summary > .mono {
+    font-size: 10px;
+    line-height: 1.5;
   }
   .match-summary h3 {
     font-size: 34px;
@@ -1483,14 +1500,15 @@ h3 > span {
     margin-block: 22px;
   }
   .match-score {
-    padding: 30px;
+    padding: 28px 24px;
   }
   .match-score > strong {
     font-size: 72px;
+    white-space: nowrap;
   }
   .score-row {
     font-size: 10px;
-    grid-template-columns: 90px 1fr 30px;
+    grid-template-columns: 90px minmax(0, 1fr) 30px;
     gap: 10px;
   }
   .mission,
@@ -1580,6 +1598,7 @@ h3 > span {
   .profile-section {
     padding-block: 55px;
     gap: 35px;
+    grid-template-columns: minmax(0, 1fr);
   }
   .profile-copy > p {
     font-size: 14px;
@@ -1596,6 +1615,8 @@ h3 > span {
   }
   .profile-card {
     padding: 22px;
+    width: 100%;
+    max-width: 100%;
   }
   .profile-card-top {
     gap: 15px;
@@ -1611,11 +1632,11 @@ h3 > span {
     margin-block: 7px;
   }
   .profile-card-top p {
-    font-size: 10px;
+    font-size: 12px;
     max-width: 155px;
   }
   .profile-card-top .mono {
-    font-size: 7px;
+    font-size: 9px;
     max-width: none;
   }
   .profile-tags {
@@ -1623,8 +1644,8 @@ h3 > span {
     gap: 4px;
   }
   .profile-tags > span {
-    font-size: 7px;
-    padding: 6px;
+    font-size: 10px;
+    padding: 7px;
     gap: 5px;
   }
   .profile-card > .tabs {
@@ -1634,24 +1655,28 @@ h3 > span {
     margin-bottom: 22px;
   }
   .profile-card > .tabs > button {
-    font-size: 8px;
+    font-size: 11px;
     min-width: 0;
     gap: 3px;
-    padding: 9px 6px;
+    padding: 9px 4px;
     flex: 1;
     justify-content: center;
   }
+  .profile-card > .tabs > button > .figma-asset {
+    display: none;
+  }
   .profile-content > p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .verified {
-    font-size: 7px;
+    font-size: 11px;
     padding-top: 20px;
     margin-top: 20px;
     gap: 6px;
+    flex-wrap: wrap;
   }
   .verified b {
-    font-size: 7px;
+    font-size: 11px;
   }
   .promise {
     padding-top: 55px;
@@ -2328,4 +2353,16 @@ h2 {
 @media (prefers-reduced-motion: no-preference) {
   .launch-screen[open] { animation: launch-popup-in .24s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes launch-popup-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+}
+
+/* Stack the profile before either column becomes too narrow on tablets. */
+@media (min-width: 761px) and (max-width: 900px) {
+  .profile-section { grid-template-columns: minmax(0,1fr); gap: 36px; }
+  .profile-card { width: 100%; max-width: 560px; justify-self: center; }
+}
+/* Keep the fixed-size journey artwork inside its tablet container. */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .process-track { grid-template-columns: minmax(0,1fr); }
+  .process-sticky { width: 100%; height: 540px; }
+  .assembly { left: 50%; margin-left: -275px; transform: scale(.85); transform-origin: top center; }
 }
