@@ -1991,7 +1991,7 @@ h2 {
 .brand-large > .progrize-wordmark {
   color: var(--fg);
   font-size: 41.38px;
-  font-weight: 300;
+  font-weight: 200;
   letter-spacing: -3.81px;
 }
 @media (max-width: 760px) {
