@@ -1975,7 +1975,7 @@ h2 {
   white-space: nowrap;
 }
 .brand-ink > .progrize-mark > i {
-  color: var(--accent-ink);
+  color: var(--fg);
 }
 .brand-ink > .progrize-wordmark {
   color: var(--fg);
