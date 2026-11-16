@@ -835,7 +835,7 @@ function App() {
               <FlickerText>gets an answer.</FlickerText>
             </h1>
             <div className="hero-description">
-              <p>Good work starts with a little respect.</p>
+              <p>A new era of job platform</p>
               <p>
                 Real roles, real people, and a reply to every application.
                 <br />
@@ -949,7 +949,11 @@ function App() {
             </p>
           </SectionHeading>
           <div className="impact-grid">
-            <article className="impact-card" data-reveal>
+            <article
+              className="impact-card"
+              data-reveal
+              style={{ backgroundColor: "var(--accent)" }}
+            >
               <div className="impact-visual">
                 <FigmaAsset section="50:438" name="imgClock" />
                 <strong>
