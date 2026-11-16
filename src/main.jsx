@@ -1100,9 +1100,7 @@ function App() {
           <div className="final-cta-content">
             <span className="section-tag">Your next chapter starts here</span>
             <h2 data-heading-reveal>
-              Good work.
-              <br />
-              <span>Better answers.</span>
+              Next Era of job hunting
             </h2>
             <p>
               Real roles. Clear salaries. An answer to every application.
