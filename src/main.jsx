@@ -853,7 +853,7 @@ function App() {
           id="journey"
           aria-label="How Progrize works"
         >
-          <div className="process-track">
+          <div className="process-track" style={{ borderRadius: "10px" }}>
             <div className="process-steps">
               {journeySteps.map((item, i) => (
                 <article
