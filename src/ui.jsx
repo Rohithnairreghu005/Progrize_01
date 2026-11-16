@@ -152,19 +152,14 @@ export function SectionHeading({ title, children, center = false }) {
     </div>
   );
 }
-export function Brand({ large = false, ink = false }) {
+export function Brand() {
   return (
-    <a
-      className={`brand ${large ? "brand-large" : ""} ${ink ? "brand-ink" : ""}`}
-      href="#home"
-      aria-label="Progrize home"
-    >
+    <a className="brand" href="#home" aria-label="Progrize home">
       <span className="progrize-mark" aria-hidden="true">
         <i />
         <i />
         <i />
       </span>
-      <span className="progrize-wordmark">Progrize</span>
     </a>
   );
 }

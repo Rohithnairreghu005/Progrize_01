@@ -85,31 +85,6 @@
     "file": "50-297-imgArrowRight.svg"
   },
   {
-    "section": "50:381",
-    "name": "imgArrowUpRight",
-    "file": "50-381-imgArrowUpRight.svg"
-  },
-  {
-    "section": "50:381",
-    "name": "imgSend",
-    "file": "50-381-imgSend.svg"
-  },
-  {
-    "section": "50:381",
-    "name": "imgLayers",
-    "file": "50-381-imgLayers.svg"
-  },
-  {
-    "section": "50:381",
-    "name": "imgShieldCheck",
-    "file": "50-381-imgShieldCheck.svg"
-  },
-  {
-    "section": "50:381",
-    "name": "imgBriefcase",
-    "file": "50-381-imgBriefcase.svg"
-  },
-  {
     "section": "50:438",
     "name": "imgClock",
     "file": "50-438-imgClock.svg"
@@ -258,5 +233,140 @@
     "section": "50:999",
     "name": "imgArrowUpRight",
     "file": "50-999-imgArrowUpRight.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionCircle",
+    "file": "102-166-imgConstructionCircle.png"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionCircle1",
+    "file": "102-166-imgConstructionCircle1.png"
+  },
+  {
+    "section": "102:166",
+    "name": "imgSend",
+    "file": "102-166-imgSend.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgArrowUpRight",
+    "file": "102-166-imgArrowUpRight.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgShieldCheck",
+    "file": "102-166-imgShieldCheck.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgLayers",
+    "file": "102-166-imgLayers.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgBriefcase",
+    "file": "102-166-imgBriefcase.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine",
+    "file": "102-166-imgConstructionLine.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine1",
+    "file": "102-166-imgConstructionLine1.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine2",
+    "file": "102-166-imgConstructionLine2.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine3",
+    "file": "102-166-imgConstructionLine3.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine4",
+    "file": "102-166-imgConstructionLine4.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine5",
+    "file": "102-166-imgConstructionLine5.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine6",
+    "file": "102-166-imgConstructionLine6.svg"
+  },
+  {
+    "section": "102:166",
+    "name": "imgConstructionLine7",
+    "file": "102-166-imgConstructionLine7.svg"
+  },
+  {
+    "section": "50:766",
+    "name": "imgImage2",
+    "file": "50-766-imgImage2.png"
+  },
+  {
+    "section": "50:816",
+    "name": "imgImage4",
+    "file": "50-816-imgImage4.png"
+  },
+  {
+    "section": "112:582",
+    "name": "imgImage8",
+    "file": "112-582-imgImage8.png"
+  },
+  {
+    "section": "112:582",
+    "name": "imgElements",
+    "file": "112-582-imgElements.svg"
+  },
+  {
+    "section": "112:582",
+    "name": "imgElements1",
+    "file": "112-582-imgElements1.svg"
+  },
+  {
+    "section": "53:4768",
+    "name": "imgImage8",
+    "file": "53-4768-imgImage8.png"
+  },
+  {
+    "section": "112:630",
+    "name": "imgImage7",
+    "file": "112-630-imgImage7.png"
+  },
+  {
+    "section": "112:630",
+    "name": "imgImage8",
+    "file": "112-630-imgImage8.png"
+  },
+  {
+    "section": "112:630",
+    "name": "imgGroup",
+    "file": "112-630-imgGroup.svg"
+  },
+  {
+    "section": "112:630",
+    "name": "imgGroup1",
+    "file": "112-630-imgGroup1.svg"
+  },
+  {
+    "section": "112:630",
+    "name": "imgArrowUpRight",
+    "file": "112-630-imgArrowUpRight.svg"
+  },
+  {
+    "section": "112:630",
+    "name": "imgArrowUpRight1",
+    "file": "112-630-imgArrowUpRight1.svg"
   }
 ]

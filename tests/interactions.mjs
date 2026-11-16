@@ -223,6 +223,19 @@ console.log(
 );
 const $ = (selector) => document.querySelector(selector);
 const all = (selector) => [...document.querySelectorAll(selector)];
+assert.equal(all(".jobee-eye").length, 3);
+assert.equal($(".hero-artwork-motion").classList.contains("jobee-awake"), motion);
+if (motion) {
+  window.dispatchEvent(new MouseEvent("pointermove", { clientX: 900, clientY: 180 }));
+  await new Promise((resolve) => setTimeout(resolve, 350));
+  assert.ok(all(".jobee-pupil").every((eye) => /translate/.test(eye.style.transform)), "All three pupils follow the pointer");
+  $(".hero").dispatchEvent(new MouseEvent("pointerdown", { bubbles: true }));
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  assert.ok(all(".jobee-eyeball").some((eye) => /scale/.test(eye.style.transform)), "Pointer press triggers a blink");
+  await new Promise((resolve) => setTimeout(resolve, 350));
+  assert.ok(all(".jobee-eyeball").every((eye) => !/scale\([^)]*,\s*0\./.test(eye.style.transform)), "Eyes reopen after blinking");
+}
+console.log("PASS: Jobee three-eye rig, pointer tracking, click blink and reduced-motion fallback");
 const click = async (el) => {
   assert.ok(el, "Expected control exists");
   await act(async () =>
@@ -235,14 +248,20 @@ const textButton = (within, label) =>
   );
 assert.equal(all("h1").length, 1);
 assert.equal($(".brand").getAttribute("aria-label"), "Progrize home");
-assert.match($(".brand").textContent, /Progrize/);
-assert.ok($(".site-header > .brand").classList.contains("brand-ink"));
-assert.ok(!$(".footer .brand").classList.contains("brand-ink"));
+assert.equal(
+  $(".site-header > .brand").getAttribute("aria-label"),
+  "Progrize home",
+);
+assert.equal($(".footer .brand"), null, "The latest Figma footer has no logo");
 assert.ok(
   all(".progrize-mark").every((mark) => mark.children.length === 3),
-  "Every rendered brand has the three-part Figma mark",
+  "The mark has the three native Figma shapes",
 );
-assert.equal($(".progrize-wordmark").textContent, "Progrize");
+assert.equal($(".progrize-wordmark"), null, "The latest logo is symbol-only");
+const logoCss = await readFile("src/light-design.css", "utf8");
+assert.match(logoCss, /width:\s*47px/);
+assert.match(logoCss, /height:\s*37px/);
+assert.match(logoCss, /color:\s*#111/);
 assert.ok(
   !/\bheard\b/i.test(document.body.textContent),
   "No legacy brand in page copy",
@@ -252,9 +271,7 @@ assert.equal(all(".company-image img").length, 4);
 assert.equal(all(".job-row").length, 4);
 assert.ok($(".hero-title").textContent.includes("Every application"));
 assert.ok($(".grid-drawing img"));
-const assets = JSON.parse(
-  await readFile("tests/figma-assets.json", "utf8"),
-);
+const assets = JSON.parse(await readFile("tests/figma-assets.json", "utf8"));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const renderedHashes = new Set();
 for (const image of all("img[data-figma-asset]")) {
@@ -268,6 +285,7 @@ for (const image of all("img[data-figma-asset]")) {
   renderedHashes.add(hash(bytes));
 }
 for (const asset of assets) {
+  if (asset.section === "112:630") continue; // Checked while the launch screen is open.
   if (asset.name === "imgHeardMark") continue; // Replaced by the explicitly requested Progrize identity.
   const bytes = await readFile(path.join("public/figma", asset.file));
   assert.ok(
@@ -360,12 +378,26 @@ console.log("PASS: carousel controls, dropdown and mobile navigation");
 await click($(".nav-actions .button"));
 assert.ok($(".modal[open]"));
 assert.equal($(".modal").getAttribute("aria-label"), "Join Progrize");
+assert.equal($(".launch-screen h2").textContent, "Thanks for the curiosity");
+assert.equal(all(".launch-screen input").length, 1);
+for (const asset of assets.filter((asset) => asset.section === "112:630")) {
+  const image = all(".launch-screen img").find((image) => image.dataset.figmaAsset === `${asset.section}/${asset.name}`);
+  assert.ok(image, `Launch artwork rendered: ${asset.name}`);
+  assert.ok((await readFile(path.join("public/figma", asset.file))).length > 0);
+  assert.ok(Number(image.width) > 0 && Number(image.height) > 0);
+}
+await act(async () => {
+  const field = $("#launch-email");
+  Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(field, "jobseeker@example.com");
+  field.dispatchEvent(new Event("input", { bubbles: true }));
+});
 await act(async () =>
   $(".modal form").dispatchEvent(
     new Event("submit", { bubbles: true, cancelable: true }),
   ),
 );
-assert.ok($(".success"));
+assert.match($(".launch-status").textContent, /saved on this device/);
+assert.deepEqual(JSON.parse(window.localStorage.getItem("progrize-launch-interest")), ["jobseeker@example.com"]);
 await click($(".modal-close"));
 assert.equal($(".modal"), null);
 assert.equal(document.body.style.overflow, "");
@@ -376,7 +408,25 @@ await act(async () => {
   $(".modal").dispatchEvent(e);
 });
 assert.equal($(".modal"), null);
+for (const selector of [".hero-actions .button", ".hero-banner > a", ".benefit-action", ".passport-panel .button", ".final-cta .button", ".agent-search"]) {
+  await click($(selector));
+  assert.ok($(".launch-screen[open]"), `Page CTA opens the launch screen: ${selector}`);
+  await click($(".modal-close"));
+}
+await click($('.site-header a[href="#jobs"]'));
+assert.equal($(".modal"), null, "Navbar section links keep navigating");
+await click($('footer a[href="#jobs"]'));
+assert.equal($(".modal"), null, "Footer section links keep navigating");
 console.log("PASS: signup, login, preview confirmation and dialog cleanup");
+
+for (const suggestion of all(".agent-suggestions button")) {
+  await click(suggestion);
+  assert.equal($("#agent-prompt").value, suggestion.textContent);
+  await act(async () => $(".agent-composer").dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })));
+  assert.ok($(".launch-screen[open]"), "Jobee submission also opens the launch screen");
+  await click($(".modal-close"));
+}
+console.log("PASS: Jobee suggestions and keyboard submissions use the launch screen");
 
 for (const link of all('a[href^="#"]')) {
   const id = link.getAttribute("href").slice(1);

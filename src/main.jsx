@@ -34,6 +34,10 @@ import {
   FigmaAsset,
 } from "./ui";
 import { useMotion } from "./motion";
+import { BrandConstruction } from "./BrandConstruction";
+import { HeroArtwork } from "./HeroArtwork";
+import { LaunchScreen } from "./LaunchScreen";
+import { AgentSection } from "./AgentSection";
 import { useCharacterGaze } from "./useCharacterGaze";
 import "lenis/dist/lenis.css";
 import "./styles.css";
@@ -605,7 +609,12 @@ function Promise({ onEmployer }) {
       </SectionHeading>
       <div className="promise-layout">
         <div className="promise-graphic" data-reveal>
-          <FigmaAsset section="50:766" name="imgPromiseTechnicalVerification" />
+          <div className="promise-artwork">
+            <FigmaAsset section="50:766" name="imgPromiseTechnicalVerification" />
+            <div className="promise-character">
+              <FigmaAsset section="50:766" name="imgImage2" alt="Character wearing clear glasses and a lime green beanie" />
+            </div>
+          </div>
           <span className="mono">SIGNED. NOT JUST SAID.</span>
         </div>
         <div className="promise-rules">
@@ -708,12 +717,10 @@ function App() {
     [menu, setMenu] = useState(false),
     [dropdown, setDropdown] = useState(false),
     [modal, setModal] = useState(null),
-    [submitted, setSubmitted] = useState(false),
     [newsletter, setNewsletter] = useState("");
   useMotion(root, setStage);
   const openModal = (type) => {
     returnFocus.current = document.activeElement;
-    setSubmitted(false);
     setModal(type);
     setMenu(false);
     setDropdown(false);
@@ -732,31 +739,28 @@ function App() {
     };
   }, [modal]);
   const apply = (c) => openModal(`Apply for ${c.role} at ${c.name}`);
-  const download = () => {
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="650" height="840"><rect width="650" height="840" rx="12" fill="#e1ff76"/><text x="45" y="75" fill="#172014" font-family="Arial" font-size="24">Progrize / YOUR PASSPORT</text><text x="45" y="240" fill="#172014" font-family="Arial" font-size="52">Your ghosting, fixed.</text><text x="45" y="305" fill="#4d5846" font-family="Arial" font-size="52">In 23 days.</text><path d="M45 360h560M45 600h560" stroke="#cfd6c7"/><text x="45" y="455" fill="#172014" font-family="Arial" font-size="72">84 / 84</text><text x="45" y="510" fill="#4d5846" font-family="monospace" font-size="20">APPLICATIONS / REAL ANSWERS</text><text x="45" y="750" fill="#172014" font-family="Arial" font-size="22">Every application gets an answer.</text></svg>`;
-    const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "progrize-passport.svg";
-    a.click();
-    URL.revokeObjectURL(url);
-  };
   return (
     <div ref={root}>
       <header className={`site-header ${menu ? "menu-open" : ""}`}>
-        <Brand ink />
+        <Brand />
         <nav aria-label="Main navigation">
-          <div className="nav-dropdown" onMouseLeave={() => setDropdown(false)}>
+          <div className="nav-dropdown" onMouseLeave={() => setDropdown(false)} onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              setDropdown(false);
+              event.currentTarget.querySelector("button").focus();
+            }
+          }}>
             <button
               className="nav-link"
               onMouseEnter={() => setDropdown(true)}
               onClick={() => setDropdown(!dropdown)}
               aria-expanded={dropdown}
+              aria-controls="header-what-we-do"
             >
               <FlickerText>What we do</FlickerText>
               <Plus size={12} className={dropdown ? "rotated" : ""} />
             </button>
-            <div className={`dropdown-panel ${dropdown ? "open" : ""}`}>
+            <div id="header-what-we-do" className={`dropdown-panel ${dropdown ? "open" : ""}`}>
               {benefits.map((b) => (
                 <a
                   href={b.anchor}
@@ -815,9 +819,19 @@ function App() {
           {menu ? <X size={22} /> : <Menu size={22} />}
         </button>
       </header>
-      <main>
+      <main onClickCapture={(event) => {
+        if (event.target.closest(".button, .hero-banner > a, .agent-search")) {
+          event.preventDefault();
+          event.stopPropagation();
+          returnFocus.current = event.target.closest("a, button");
+          setModal("Join Progrize");
+          setMenu(false);
+          setDropdown(false);
+        }
+      }}>
         <section className="hero" id="home">
           <GridDrawing />
+          <HeroArtwork />
           <div className="hero-center">
             <div className="hero-banner">
               <span className="banner-icon">
@@ -829,13 +843,12 @@ function App() {
                 <FigmaAsset section="50:115" name="imgArrowUpRight2" />
               </a>
             </div>
-            <h1 className="hero-title" style={{ fontWeight: 300 }}>
+            <h1 className="hero-title">
               <FlickerText>Every application</FlickerText>
               <br />
               <FlickerText>gets an answer.</FlickerText>
             </h1>
             <div className="hero-description">
-              <p>A new era of job platform</p>
               <p>
                 Real roles, real people, and a reply to every application.
                 <br />
@@ -891,26 +904,18 @@ function App() {
         </section>
         <EmployerCarousel onExplore={apply} />
         <section className="benefits container section" id="how-it-works">
-          <SectionHeading
-            title={
-              <>
-                A better way to find
-                <br />
-                what comes next.
-              </>
-            }
-          >
-            <Button secondary onClick={() => openModal("Join Progrize")}>
-              Get started
-            </Button>
-          </SectionHeading>
+          <header className="benefits-intro" data-heading-reveal>
+            <p className="benefits-eyebrow">WHAT PROGRIZE CHANGES</p>
+            <h2>A better way to find what comes next.</h2>
+            <p>Clear answers. Honest employers. Work that fits.</p>
+          </header>
           <div className="benefit-grid">
             {benefits.map((b) => (
-              <article className="benefit corner-frame" key={b.num} data-reveal>
+              <article className={`benefit benefit-${b.num}`} key={b.num} data-reveal>
                 <div className="benefit-content">
                   <div className="benefit-icon">
                     <FigmaAsset
-                      section="50:381"
+                      section="102:166"
                       name={
                         "img" +
                         {
@@ -925,11 +930,14 @@ function App() {
                   <h3>{b.title}</h3>
                   <p>{b.body}</p>
                 </div>
-                <Button secondary href={b.anchor}>
-                  {b.link}
-                </Button>
+                <a className="button benefit-action" href="#promise">
+                  <FlickerText>See our promise</FlickerText>
+                  <FigmaAsset section="102:166" name="imgArrowUpRight" />
+                </a>
+                <FigmaAsset section="102:166" name="imgConstructionLine" className="benefit-divider" />
               </article>
             ))}
+            <BrandConstruction />
           </div>
         </section>
         <section className="impact container section">
@@ -1055,7 +1063,7 @@ function App() {
         <JobBrowser onApply={apply} />
         <Profile onJoin={() => openModal("Create your profile")} />
         <Promise onEmployer={() => openModal("Employer early access")} />
-        <section className="passport-section container section">
+        <section className="passport-section container section" id="passport">
           <div className="passport-panel">
             <div>
               <h2 data-heading-reveal>
@@ -1068,7 +1076,7 @@ function App() {
                 everything you put into finding what’s next. Keep it. Share it.
                 Make it yours.
               </p>
-              <Button onClick={download}>Get my card</Button>
+              <Button onClick={() => openModal("Get my card")}>Get my card</Button>
             </div>
             <div className="passport-visual" data-reveal>
               <div className="passport-card">
@@ -1101,10 +1109,17 @@ function App() {
                     AN ANSWER. AT LAST.
                   </span>
                 </div>
+                <FigmaAsset
+                  section="50:816"
+                  name="imgImage4"
+                  className="passport-character"
+                  alt="Frog in orange sunglasses and a teal hoodie raising two peace signs"
+                />
               </div>
             </div>
           </div>
         </section>
+        <AgentSection onApply={apply} onProfile={() => openModal("Create your profile")} onSearch={() => openModal("Join Progrize")} />
         <FeatureList onJoin={() => openModal("Join Progrize")} />
         <section className="final-cta">
           <GridDrawing type="cta" />
@@ -1127,7 +1142,6 @@ function App() {
       <footer className="footer">
         <div className="footer-main">
           <div className="footer-about">
-            <Brand large />
             <p>
               Every application is someone’s next chapter. Progrize brings a
               little accountability to hiring — real roles, clear salaries,
@@ -1202,106 +1216,7 @@ function App() {
           </div>
         </div>
       </footer>
-      {modal && (
-        <dialog
-          className="modal"
-          data-lenis-prevent
-          ref={dialog}
-          aria-label={modal}
-          onCancel={(e) => {
-            e.preventDefault();
-            closeModal();
-          }}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) closeModal();
-          }}
-        >
-          <button
-            className="modal-close icon-button"
-            onClick={closeModal}
-            aria-label="Close dialog"
-          >
-            <X size={20} />
-          </button>
-          {submitted ? (
-            <div className="success">
-              <div className="success-mark">
-                <Check size={28} />
-              </div>
-              <h2>Thanks for your interest.</h2>
-              <p>
-                This is a local preview. No details have been sent, and no
-                account has been created. You can keep exploring the site.
-              </p>
-              <Button onClick={closeModal}>Keep exploring</Button>
-            </div>
-          ) : (
-            <>
-              <Brand />
-              <h2>
-                {modal.includes("Apply for")
-                  ? "Make your next move."
-                  : modal === "Log in"
-                    ? "Welcome back."
-                    : modal === "Employer early access"
-                      ? "Set a better standard."
-                      : modal.startsWith("Newsletter")
-                        ? "Stay in the loop."
-                        : "Get started with Progrize."}
-              </h2>
-              <p>
-                {modal.includes("Apply for")
-                  ? modal
-                  : modal.startsWith("Newsletter")
-                    ? "Preview the newsletter sign-up below."
-                    : "Join the people making work a little more human."}
-              </p>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-              >
-                {modal !== "Log in" && (
-                  <label>
-                    Your name
-                    <input
-                      autoComplete="name"
-                      name="name"
-                      required
-                      placeholder="Alex Morgan"
-                    />
-                  </label>
-                )}
-                <label>
-                  Email address
-                  <input
-                    name="email"
-                    autoComplete="email"
-                    type="email"
-                    required
-                    placeholder="you@example.com"
-                  />
-                </label>
-                {modal === "Employer early access" && (
-                  <label>
-                    Company name
-                    <input name="company" required placeholder="Your company" />
-                  </label>
-                )}
-                <Button>
-                  {modal === "Log in"
-                    ? "Continue with email"
-                    : "Register your interest"}
-                </Button>
-                <small>
-                  Interactive preview. No account is created or email sent.
-                </small>
-              </form>
-            </>
-          )}
-        </dialog>
-      )}
+      {modal && <LaunchScreen dialogRef={dialog} label={modal} onClose={closeModal} />}
     </div>
   );
 }

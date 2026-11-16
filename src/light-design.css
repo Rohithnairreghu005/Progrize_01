@@ -187,11 +187,6 @@ h3 > span {
 .hero-description {
   margin-top: 30px;
 }
-.hero-description > p:first-child {
-  font-size: 22px;
-  line-height: 1.5;
-  margin-bottom: 12px;
-}
 .hero-description > p:last-child {
   font-size: 15px;
   color: var(--fg);
@@ -270,7 +265,7 @@ h3 > span {
   align-items: center;
   padding: 50px;
   border: 1px solid var(--line);
-  border-radius: 80px;
+  border-radius: 10px;
   min-height: 722px;
 }
 .process-steps {
@@ -887,8 +882,33 @@ h3 > span {
 .promise-graphic {
   min-height: 415px;
 }
-.promise-graphic > .figma-asset {
-  margin: auto;
+.promise-artwork {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+  aspect-ratio: 400 / 380;
+  overflow: hidden;
+}
+.promise-artwork > .figma-asset {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.promise-character {
+  position: absolute;
+  left: 11.75%;
+  right: 12%;
+  top: 3.947368%;
+  aspect-ratio: 337 / 434;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.promise-character > .figma-asset {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 .promise-graphic > .mono {
   position: static;
@@ -1262,10 +1282,6 @@ h3 > span {
   }
   .hero-description {
     margin-top: 26px;
-  }
-  .hero-description > p:first-child {
-    font-size: 17px;
-    line-height: 1.5;
   }
   .hero-description > p:last-child {
     font-size: 13px;
@@ -1931,80 +1947,49 @@ h2 {
   background: var(--fg);
   color: var(--bg);
 }
+.brand {
+  width: 64px;
+  height: 50px;
+  gap: 0;
+  justify-content: flex-start;
+}
 .brand > .progrize-mark {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
   position: relative;
-  display: block;
-  width: 37.08px;
-  height: 30px;
-  color: #fff;
+  width: 47px;
+  height: 37px;
+  color: #111;
   flex-shrink: 0;
 }
 .brand > .progrize-mark > i {
-  position: absolute;
   display: block;
-  color: inherit;
+  position: static;
+  flex-shrink: 0;
   background: currentColor;
-  border-radius: 58px 0 5px 5px;
+  border-radius: 58px 0 0 0;
 }
 .brand > .progrize-mark > i:nth-child(1) {
-  left: 0;
-  top: 66.28%;
-  width: 22.73%;
-  height: 33.71%;
+  width: 11px;
+  height: 12px;
 }
 .brand > .progrize-mark > i:nth-child(2) {
-  left: 24.55%;
-  top: 31.46%;
-  width: 30%;
-  height: 68.54%;
+  width: 15px;
+  height: 25px;
 }
 .brand > .progrize-mark > i:nth-child(3) {
-  left: 56.37%;
-  top: 0;
-  width: 43.63%;
-  height: 100%;
-}
-.brand > .progrize-wordmark {
-  width: auto;
-  color: #d6e264;
-  font-family: "Manrope:SemiBold", Manrope, Arial, sans-serif;
-  font-size: 33.55px;
-  font-weight: 600;
-  line-height: 0.7895;
-  letter-spacing: -3.09px;
-  white-space: nowrap;
-}
-.brand-ink > .progrize-mark > i {
-  color: var(--fg);
-}
-.brand-ink > .progrize-wordmark {
-  color: var(--fg);
-  font-weight: 400;
-}
-.brand-large > .progrize-mark {
-  width: 45.74px;
+  width: 19px;
   height: 37px;
 }
-.brand-large > .progrize-mark > i {
-  color: var(--fg);
-}
-.brand-large > .progrize-wordmark {
-  color: var(--fg);
-  font-size: 41.38px;
-  font-weight: 200;
-  letter-spacing: -3.81px;
+.footer-about > p:first-child {
+  margin-top: 0;
 }
 @media (max-width: 760px) {
   .hero-title {
     font-size: clamp(38px, 9.6vw, 72px);
     font-weight: 500;
     letter-spacing: -0.065em;
-  }
-  .brand > .progrize-wordmark {
-    font-size: 33.55px;
-  }
-  .brand-large > .progrize-wordmark {
-    font-size: 41.38px;
   }
   .company-image {
     width: 30px;
@@ -2130,4 +2115,217 @@ h2 {
   .character-head {
     display: none !important;
   }
+}
+/* Latest Figma 102:166: benefits surrounding the logo construction canvas. */
+.benefits.section { padding-top: 72px; padding-bottom: 218px; }
+.benefits-intro { text-align: center; margin-bottom: 57px; }
+.benefits-intro .benefits-eyebrow { font-size: 12px; line-height: 18px; letter-spacing: 1.6px; margin-bottom: 22px; }
+.benefits-intro h2 { font-size: 52px; font-weight: 400; line-height: 64px; letter-spacing: -2.6px; margin: 0 0 20px; }
+.benefits-intro > p:last-child { font-size: 18px; line-height: 28px; color: var(--muted); }
+.benefits .benefit-grid { grid-template-columns: minmax(0,310fr) minmax(0,496fr) minmax(0,310fr); column-gap: 54px; row-gap: 29px; border: 0; border-radius: 0; align-items: start; }
+.benefits .benefit { padding: 0; min-height: 0; gap: 16px; border: 0; position: relative; }
+.benefits .benefit-01 { grid-area: 1 / 1; }
+.benefits .benefit-02 { grid-area: 1 / 3; }
+.benefits .benefit-03 { grid-area: 2 / 1; }
+.benefits .benefit-04 { grid-area: 2 / 3; }
+.benefits .benefit-icon { width: 32px; height: 32px; margin-bottom: 16px; }
+.benefits .benefit h3 { font-size: 24px; line-height: 32px; margin: 0 0 16px; font-weight: 400; letter-spacing: -.48px; }
+.benefits .benefit p { font-size: 16px; line-height: 24px; max-width: none; }
+.benefits .benefit-action { height: 48px; padding: 10px 12px; gap: 8px; border-radius: 4px; font-size: 14px; }
+.benefits .benefit-action > .figma-asset { width: 12px; height: 12px; }
+.benefits .benefit-divider { width: 100%; height: 1px; margin-top: 15px; }
+.benefits .benefit:nth-child(n+3) .benefit-divider { display: none; }
+.brand-construction { position: relative; grid-area: 1 / 2 / 3 / 3; margin: 0; width: 100%; aspect-ratio: 496 / 556; }
+.construction-piece, .construction-boundary, .construction-mark, .construction-point { position: absolute; }
+.construction-piece > .figma-asset { width: 100%; height: 100%; max-width: none; }
+.construction-vertical { transform-origin: 0 0; transform: rotate(90deg); }
+.construction-boundary { border: 1px solid var(--line); }
+.construction-mark { display: flex; align-items: end; gap: 2.12766%; }
+.construction-mark i { display: block; background: #e5eadd; border: 1px solid var(--fg); border-top-left-radius: 348px; }
+.construction-mark i:nth-child(1) { width: 23.40426%; height: 32.43243%; }
+.construction-mark i:nth-child(2) { width: 31.91489%; height: 67.56757%; }
+.construction-mark i:nth-child(3) { width: 40.42553%; height: 100%; }
+.construction-point { background: var(--bg); border: 1px solid #a3ae98; }
+.brand-construction figcaption { position: absolute; top: 94.964%; width: 100%; text-align: center; font-size: 11px; line-height: 18px; letter-spacing: 1.2px; color: var(--muted); }
+@media (max-width: 1100px) {
+  .benefits .benefit-grid { column-gap: 24px; }
+  .benefits .benefit h3 { font-size: 21px; }
+  .benefits .benefit p { font-size: 14px; line-height: 22px; }
+}
+@media (max-width: 760px) {
+  .benefits.section { padding-block: 64px; }
+  .benefits-intro { margin-bottom: 48px; }
+  .benefits-intro h2 { font-size: 36px; line-height: 1.15; letter-spacing: -1.8px; }
+  .benefits-intro > p:last-child { font-size: 16px; }
+  .benefits .benefit-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px 24px; }
+  .benefits .benefit { grid-area: auto; }
+  .brand-construction { grid-area: 1 / 1 / 2 / 3; max-width: 420px; justify-self: center; margin-bottom: 24px; }
+  .benefits .benefit p { font-size: 15px; }
+  .benefits .benefit-divider { display: none; }
+}
+@media (max-width: 440px) {
+  .benefits .benefit-grid { grid-template-columns: 1fr; }
+  .brand-construction { grid-area: 1 / 1; }
+  .benefits .benefit { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+}
+
+/* Figma 50:816: wider passport with the character extending past the card. */
+.passport-panel { grid-template-columns: minmax(0,528fr) minmax(0,469fr); }
+.passport-visual { container-type: inline-size; width: 100%; }
+.passport-card { width: 100%; min-width: 0; padding: 0; aspect-ratio: 469 / 442; }
+.passport-card .passport-top { position: absolute; left: 5.544%; top: 5.882%; justify-content: start; gap: 24px; text-transform: uppercase; font-size: 1.919cqw; }
+.passport-card h3 { position: absolute; left: 5.544%; top: 15.385%; width: 52.878%; margin: 0; font-size: 5.757cqw; line-height: 1.5; letter-spacing: -.02em; }
+.passport-card .passport-stats { position: absolute; left: 5.544%; top: 39.819%; width: 52.878%; margin: 0; grid-template-columns: 1fr 1fr; }
+.passport-card .passport-stats > div { padding: 5.757cqw 0 3.9cqw; }
+.passport-card .passport-stats > div:nth-child(even) { padding-left: 2.985cqw; }
+.passport-card .passport-stats strong { font-size: 6.397cqw; line-height: 1.08; }
+.passport-card .passport-stats > div:nth-child(even) > strong { color: var(--accent-ink) !important; }
+.passport-card .passport-stats .mono { font-size: 1.919cqw; margin-top: 1.279cqw; line-height: 1.5; }
+.passport-card .passport-bottom { position: absolute; left: 5.544%; top: 87.33%; margin: 0; font-size: 1.919cqw; line-height: 1.5; }
+.passport-card > .passport-character { position: absolute; left: 55.224%; top: 11.312%; width: 55.65%; height: 104.977%; object-fit: cover; pointer-events: none; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .passport-panel { padding: 45px; gap: 35px; }
+}
+@media (max-width: 760px) {
+  .passport-panel { grid-template-columns: 1fr; padding-bottom: 80px; }
+  .passport-visual { max-width: 400px; width: 90%; justify-self: start; }
+}
+
+/* Latest Figma hero: layered artwork behind the centered content. */
+.hero { padding-top: 196px; }
+.hero-center { z-index: 1; }
+.hero-title { font-weight: 500; }
+.hero-banner > a { background: var(--accent); }
+.hero-artwork { position: absolute; left: 39.43%; right: 38.11%; top: 677px; aspect-ratio: 322.916553 / 342.342741; pointer-events: none; z-index: 2; }
+.hero-artwork-motion { position: absolute; inset: 0; transform-origin: 50% 55%; }
+.jobee-sprite { position: absolute; width: 82%; aspect-ratio: 1192 / 1319; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-15deg); }
+.jobee-sprite > .figma-asset { width: 100%; height: auto; }
+@media (max-width: 760px) {
+  .hero { padding-top: 170px; }
+  .hero-artwork { top: auto; bottom: -100px; left: calc(50% - 125px); right: auto; width: 250px; }
+  .hero-title { font-size: clamp(36px,8.2vw,61px); }
+}
+
+/* Jobee agent section, Figma 112:582. */
+.agent-section { padding-block: 72px 104px; }
+.agent-intro { min-height: 179px; }
+.agent-eyebrow { font-size: 12px; line-height: 18px; letter-spacing: 1.6px; color: var(--muted); margin-bottom: 22px; }
+.agent-intro h2 { font-size: 52px; line-height: 64px; letter-spacing: -2.6px; margin-bottom: 20px; }
+.agent-intro > p:last-child { font-size: 18px; line-height: 28px; color: var(--muted); }
+.agent-card { position: relative; width: 618px; max-width: 100%; min-height: 593px; margin-inline: auto; padding: 159px 16px 47px; border: 1px solid #e4e4e4; border-radius: 20px; background: #f7f7f5; overflow: hidden; }
+.agent-mascot { position: absolute; left: -61px; top: -95px; width: 264.204px; height: 280.098px; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.agent-mascot .figma-asset { width: 210.972px; height: 233.449px; object-fit: cover; transform: rotate(165deg); }
+.agent-identity h3 { font-size: 24px; line-height: 1.4; letter-spacing: 0; color: #000; margin: 0 0 8px; }
+.agent-identity p { font-size: 16px; line-height: 28px; color: var(--muted); }
+.agent-composer { position: relative; margin-top: 28px; padding: 20px 11px 11px; background: white; border: 1px solid #ddd; border-radius: 16px; }
+.agent-composer:focus-within { border-color: var(--accent-ink); }
+.agent-composer textarea { display: block; width: 100%; min-height: 28px; border: 0; background: transparent; outline: none; resize: vertical; font: inherit; font-size: 12px; line-height: 1.4; color: #16181d; }
+.agent-composer textarea::placeholder { color: #4d5846; opacity: 1; }
+.agent-controls { display: flex; align-items: center; gap: 4px; margin-top: 13px; }
+.agent-attach, .agent-tools summary { height: 32px; background: #f1f5f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; }
+.agent-attach { width: 32px; }
+.agent-tools { position: relative; }
+.agent-tools summary { padding: 8px; gap: 12px; list-style: none; }
+.agent-tools summary::-webkit-details-marker { display: none; }
+.agent-tools > div { position: absolute; top: 38px; left: 0; min-width: 145px; padding: 4px; background: white; border: 1px solid var(--line); border-radius: 8px; z-index: 3; box-shadow: 0 8px 20px #17201412; }
+.agent-tools button { display: block; width: 100%; padding: 10px; text-align: left; font-size: 12px; border-radius: 4px; }
+.agent-tools button:hover { background: var(--surface); }
+.agent-search { margin-left: auto; width: 96px; height: 32px; background: var(--accent); border-radius: 8px; font-size: 12px; color: #000; }
+.agent-search:hover { background: #d2f45d; }
+.agent-attachment { font-size: 12px; margin-top: 10px; overflow-wrap: anywhere; }
+.agent-attachment button { padding: 4px 8px; }
+.agent-suggestions { margin-top: 11px; }
+.agent-suggestions p, .agent-suggestions button { padding: 8px 4px; font-size: 13px; line-height: 18px; }
+.agent-suggestions button { display: block; width: 100%; text-align: left; border-bottom: 1px solid #e2e8f0; color: #334155; }
+.agent-suggestions button:hover { background: #eaf0e3; }
+.agent-results { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); }
+.agent-results p { font-size: 14px; margin-bottom: 12px; }
+.agent-results > button { display: flex; gap: 16px; width: 100%; align-items: center; justify-content: space-between; text-align: left; padding: 12px 4px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.agent-results small { display: block; font-size: 11px; color: var(--muted); margin-top: 6px; }
+.agent-results > small { margin-top: 16px; }
+@media (max-width: 760px) {
+  .agent-section { padding-block: 64px; }
+  .agent-intro { min-height: 0; margin-bottom: 32px; }
+  .agent-intro h2 { font-size: 36px; line-height: 1.15; letter-spacing: -1.8px; }
+  .agent-intro > p:last-child { font-size: 16px; }
+  .agent-card { padding-inline: 14px; }
+  .agent-suggestions button { font-size: 12px; }
+}
+
+/* Header from Figma 53:4826 inside the supplied frame 53:4767. */
+.site-header { background: var(--bg); min-height: 82px; }
+@media (min-width: 761px) {
+  .site-header { padding: 16px 32px; }
+  .site-header > .brand { flex: 0 0 64px; }
+  .site-header > nav { flex: 0 0 487px; width: 487px; height: 46px; min-height: 46px; padding: 12px; gap: 24px; justify-content: center; }
+  .site-header .nav-link { padding: 0; font-size: 14px; line-height: 21px; letter-spacing: -.28px; white-space: nowrap; }
+  .site-header .nav-actions { flex: 0 0 181px; height: 46px; gap: 20px; }
+  .site-header .nav-login { font-size: 14px; line-height: 21px; letter-spacing: -.28px; padding: 0; }
+  .site-header .nav-actions > .button { width: 124px; height: 46px; min-height: 46px; padding: 10px 12px; font-size: 14px; line-height: 14px; letter-spacing: -.28px; border-radius: 4px; }
+}
+@media (min-width: 761px) and (max-width: 900px) {
+  .site-header { padding-inline: 20px; gap: 12px; }
+  .site-header > nav { flex: 1 1 auto; width: auto; gap: 14px; padding-inline: 10px; }
+  .site-header .nav-link { font-size: 12px; }
+  .site-header .nav-actions { flex-basis: 156px; gap: 12px; }
+  .site-header .nav-actions > .button { width: 110px; font-size: 12px; }
+}
+@media (max-width: 760px) {
+  .site-header { min-height: 64px; }
+}
+
+/* The new hero mascot occupies the former scroll-prompt area. */
+.hero > .scroll-prompt { visibility: hidden; }
+
+/* Small eye rigs cover the baked eyes only while pointer animation is enabled. */
+.jobee-eye { display: none; position: absolute; top: 20.395%; width: 8.14%; height: 8.34%; border-radius: 50%; background: #030403; isolation: isolate; }
+.jobee-awake .jobee-eye { display: block; }
+.jobee-eye::before { content: ""; position: absolute; inset: -9%; background: #030403; border-radius: 50%; z-index: -1; }
+.jobee-eye-1 { left: 37.58%; }
+.jobee-eye-2 { left: 47.9%; }
+.jobee-eye-3 { left: 58.22%; }
+.jobee-eyeball { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; background: radial-gradient(ellipse at 32% 28%, #fff 0%, #e2e1ec 38%, #b9b9c8 78%, #8b8c9c 100%); transform-origin: center; }
+.jobee-pupil { position: absolute; width: 57%; height: 65%; top: 17.5%; left: 21.5%; border-radius: 50%; background: radial-gradient(ellipse at 35% 25%, #3b3a42, #111116 65%, #050508); box-shadow: inset 0 0 1px #000; }
+.jobee-pupil::after { content: ""; position: absolute; left: 17%; top: 15%; width: 21%; height: 18%; border-radius: 50%; background: #ffffffa0; }
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) { .jobee-awake .jobee-eye { display: none; } }
+
+/* Centered launch-interest modal adapted from Figma 112:630. */
+.modal.launch-screen { inset: 0; width: min(1000px, calc(100vw - 48px)); max-width: none; height: fit-content; min-height: 0; max-height: calc(100dvh - 48px); margin: auto; padding: 0; border: 1px solid #ffffff70; border-radius: 18px; background: #fff; color: var(--fg); overflow: auto; box-shadow: 0 30px 100px #0004; }
+.launch-canvas { position: relative; min-height: 620px; overflow: hidden; isolation: isolate; }
+.launch-screen::backdrop { background: #17201480; backdrop-filter: blur(6px); }
+.launch-grid { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.launch-grid > .figma-asset { position: absolute; max-width: none; }
+.launch-grid-lines { left: .08%; top: -29.34px; }
+.launch-grid-curves { left: -3.2%; top: -562.5px; }
+.launch-photo { position: absolute; left: 0; top: 0; bottom: 0; width: 45.15625%; overflow: hidden; }
+.launch-photo > .figma-asset { position: absolute; width: 100%; height: calc(100% + 127px); top: -46px; object-fit: cover; }
+.launch-screen .launch-close, .launch-submit { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 12px; height: 48px; border: 0; border-radius: 4px; font: inherit; font-size: 14px; line-height: 14px; letter-spacing: -.28px; color: var(--fg); cursor: pointer; }
+.launch-screen .launch-close { position: absolute; top: 24px; right: 24px; width: auto; background: #e5eadd; z-index: 2; }
+.launch-close:hover, .launch-submit:hover { background: var(--fg); color: white; }
+.launch-close:hover img, .launch-submit:hover img { filter: brightness(0) invert(1); }
+.launch-content { position: relative; margin-left: 50%; padding-top: 96px; width: 45.3125%; z-index: 1; }
+.launch-screen .launch-content h2 { font-size: clamp(32px,3.2vw,40px); font-weight: 400; line-height: 1.08; letter-spacing: -.03em; margin: 0 0 13px; }
+.launch-content > p { max-width: 406px; font-size: 16px; line-height: 24px; color: var(--muted); margin: 0; }
+.launch-screen .launch-content form { display: flex; flex-direction: column; gap: 0; margin: 28px 0 0; }
+.launch-screen .launch-content input { width: 100%; height: 51px; border: 1px solid #ddd; border-radius: 16px; padding: 16px 12px; background: white; color: #16181d; font: inherit; font-size: 12px; }
+.launch-screen .launch-content input:focus { outline: 2px solid var(--accent-ink); outline-offset: 3px; }
+.launch-submit { align-self: center; margin-top: 35px; background: var(--accent); }
+.launch-screen .launch-status { margin-top: 24px; font-size: 14px; line-height: 22px; text-align: left; padding: 0; }
+.launch-mascot { position: absolute; left: 56.56%; right: 10.83%; top: 420px; aspect-ratio: 417.336876 / 442.443245; pointer-events: none; }
+.launch-mascot > .figma-asset { position: absolute; width: 82%; height: auto; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(-15deg); }
+@media (max-width: 760px) {
+  .modal.launch-screen { width: calc(100vw - 28px); max-height: calc(100dvh - 28px); border-radius: 14px; }
+  .launch-canvas { min-height: 680px; }
+  .launch-photo { position: relative; width: 100%; height: 170px; }
+  .launch-photo > .figma-asset { height: 100%; top: 0; object-position: center 35%; }
+  .launch-screen .launch-close { top: 20px; right: 20px; }
+  .launch-content { margin-left: 0; width: 100%; padding: 36px 24px 0; }
+  .launch-screen .launch-content h2 { font-size: 30px; }
+  .launch-mascot { top: 510px; left: calc(50% - 115px); right: auto; width: 230px; }
+  .launch-grid { opacity: .6; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .launch-screen[open] { animation: launch-popup-in .24s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes launch-popup-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 }

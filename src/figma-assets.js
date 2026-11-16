@@ -1,5 +1,15 @@
 // Permanent local assets from the latest Figma frame 50:114.
 export const figmaAssets = {
+"112:630": {"imgImage7": {"src": "/figma/112-630-imgImage7.png", "width": 941, "height": 1672}, "imgImage8": {"src": "/figma/112-630-imgImage8.png", "width": 1192, "height": 1319}, "imgGroup": {"src": "/figma/112-630-imgGroup.svg", "width": 1438.0, "height": 911.734}, "imgGroup1": {"src": "/figma/112-630-imgGroup1.svg", "width": 1534.6, "height": 1500.25}, "imgArrowUpRight": {"src": "/figma/112-630-imgArrowUpRight.svg", "width": 12.0, "height": 12.0}, "imgArrowUpRight1": {"src": "/figma/112-630-imgArrowUpRight1.svg", "width": 12.0, "height": 12.0}},
+  "53:4768": {
+    imgImage8: {
+      src: "/figma/53-4768-imgImage8.png",
+      width: 1192,
+      height: 1319,
+    },
+  },
+"112:582": {"imgImage8": {"src": "/figma/112-582-imgImage8.png", "width": 1192, "height": 1319}, "imgElements": {"src": "/figma/112-582-imgElements.svg", "width": 14.8333, "height": 14.8333}, "imgElements1": {"src": "/figma/112-582-imgElements1.svg", "width": 11.5001, "height": 6.50005}},
+"102:166": {"imgConstructionCircle": {"src": "/figma/102-166-imgConstructionCircle.png", "width": 896, "height": 896}, "imgConstructionCircle1": {"src": "/figma/102-166-imgConstructionCircle1.png", "width": 448, "height": 448}, "imgSend": {"src": "/figma/102-166-imgSend.svg", "width": 32.0, "height": 32.0}, "imgArrowUpRight": {"src": "/figma/102-166-imgArrowUpRight.svg", "width": 12.0, "height": 12.0}, "imgShieldCheck": {"src": "/figma/102-166-imgShieldCheck.svg", "width": 32.0, "height": 32.0}, "imgLayers": {"src": "/figma/102-166-imgLayers.svg", "width": 32.0, "height": 32.0}, "imgBriefcase": {"src": "/figma/102-166-imgBriefcase.svg", "width": 32.0, "height": 32.0}, "imgConstructionLine": {"src": "/figma/102-166-imgConstructionLine.svg", "width": 310.0, "height": 1.0}, "imgConstructionLine1": {"src": "/figma/102-166-imgConstructionLine1.svg", "width": 448.0, "height": 1.0}, "imgConstructionLine2": {"src": "/figma/102-166-imgConstructionLine2.svg", "width": 448.0, "height": 1.0}, "imgConstructionLine3": {"src": "/figma/102-166-imgConstructionLine3.svg", "width": 12.0, "height": 1.0}, "imgConstructionLine4": {"src": "/figma/102-166-imgConstructionLine4.svg", "width": 12.0, "height": 1.0}, "imgConstructionLine5": {"src": "/figma/102-166-imgConstructionLine5.svg", "width": 7.0, "height": 1.0}, "imgConstructionLine6": {"src": "/figma/102-166-imgConstructionLine6.svg", "width": 7.0, "height": 1.0}, "imgConstructionLine7": {"src": "/figma/102-166-imgConstructionLine7.svg", "width": 282.0, "height": 1.0}},
   "50:1086": {
     imgHeardMark: {
       src: "/figma/50-1086-imgHeardMark.svg",
@@ -13,6 +23,11 @@ export const figmaAssets = {
     },
   },
   "50:115": {
+    imgImage5: {
+      src: "/figma/50-115-imgImage5.png",
+      width: 683,
+      height: 1024,
+    },
     imgGroup: {
       src: "/figma/50-115-imgGroup.svg",
       width: 1438.0,
@@ -234,6 +249,11 @@ export const figmaAssets = {
     },
   },
   "50:766": {
+    imgImage2: {
+      src: "/figma/50-766-imgImage2.png",
+      width: 735,
+      height: 1138,
+    },
     imgArrowUpRight: {
       src: "/figma/50-766-imgArrowUpRight.svg",
       width: 12.0,
@@ -251,6 +271,11 @@ export const figmaAssets = {
     },
   },
   "50:816": {
+    imgImage4: {
+      src: "/figma/50-816-imgImage4.png",
+      width: 736,
+      height: 1308,
+    },
     imgArrowUpRight: {
       src: "/figma/50-816-imgArrowUpRight.svg",
       width: 12.0,
