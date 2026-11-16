@@ -744,7 +744,7 @@ function App() {
   return (
     <div ref={root}>
       <header className={`site-header ${menu ? "menu-open" : ""}`}>
-        <Brand />
+        <Brand ink />
         <nav aria-label="Main navigation">
           <div className="nav-dropdown" onMouseLeave={() => setDropdown(false)}>
             <button

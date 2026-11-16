@@ -152,10 +152,10 @@ export function SectionHeading({ title, children, center = false }) {
     </div>
   );
 }
-export function Brand({ large = false }) {
+export function Brand({ large = false, ink = false }) {
   return (
     <a
-      className={`brand ${large ? "brand-large" : ""}`}
+      className={`brand ${large ? "brand-large" : ""} ${ink ? "brand-ink" : ""}`}
       href="#home"
       aria-label="Progrize home"
     >

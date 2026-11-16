@@ -1936,12 +1936,14 @@ h2 {
   display: block;
   width: 37.08px;
   height: 30px;
+  color: #fff;
   flex-shrink: 0;
 }
 .brand > .progrize-mark > i {
   position: absolute;
   display: block;
-  background: #fff;
+  color: inherit;
+  background: currentColor;
   border-radius: 58px 0 5px 5px;
 }
 .brand > .progrize-mark > i:nth-child(1) {
@@ -1971,6 +1973,12 @@ h2 {
   line-height: 0.7895;
   letter-spacing: -3.09px;
   white-space: nowrap;
+}
+.brand-ink > .progrize-mark > i {
+  color: var(--accent-ink);
+}
+.brand-ink > .progrize-wordmark {
+  color: var(--fg);
 }
 .brand-large > .progrize-mark {
   width: 45.74px;
